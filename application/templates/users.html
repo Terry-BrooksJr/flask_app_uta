@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Welcome to Universal Tech Academy.</h1>
+        {% for user in users%}
+        <dl>
+            <dt>User ID: {{user.user_id}}</dt>
+            <dd>Email: {{user.email}}</dd>
+            <dt>Password: {{user.password}}</dt>
+        </dl>
+        {% else %}
+        <h1> NO Users Found </h1>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
