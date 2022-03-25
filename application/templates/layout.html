@@ -13,7 +13,11 @@
         <img src="{{ url_for( 'static', filename='/images/uta-logo-200.png') }}" />
     </div>
     <div class="container">
-        {% include "includes/nav.html" %} {% block content %} {% endblock %}
+        {% include "includes/nav.html" %} {% with shoutouts = get_flashed_messages() %} {% if shoutouts %} {% for shoutouts in {% for shoutout in shoutouts%%}
+        <div class="alert alert-danger">
+            {{shoutout}}
+        </div>
+        {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
 
     </div>
     {% include "includes/footer.html" %}

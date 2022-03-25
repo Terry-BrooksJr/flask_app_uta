@@ -7,7 +7,7 @@
         <form name="login" action="" method="post">
             {{form.hidden_tag()}}
             <p>
-                {{form.email.label}} {{form.email}} {{form.password.label}} {{form.password(size=15)}} {form.submit()}
+                {{form.email.label}} {{form.email}} {{form.password.label}} {{form.password(size=15)}} {{form.remember_me.label}} {{form.remember_me}} {{form.submit()}}
             </p>
 
             {# <label for="username"><b>Username</b></label>
