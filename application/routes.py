@@ -17,8 +17,11 @@ def index():
 def login():
     form = LoginForm
     if form.validate_on_submit:
-        if request.form.get('email') == 'terry@brooksjr.com':
-            flash("You have successfully logged in!", "success")
+        email =     form.email.data
+        password = form.password.data
+        user = User.objects(email=email.data).first()
+        if user and password == user.password:
+            flash(f"{user.first_name} have successfully logged in!", "success")
             return redirect("/index")
         else:
             flash('Email and Password Combination Not Found', "danger")
@@ -37,7 +40,7 @@ def register():
 @app.route("/enrollment", methods=["GET","POST"])
 def enrollment():
     id = request.form.get('courseID')
-    title = request.form['title']
+    title = request.form.get('title')
     term = request.form.get('term')
     return render_template("enrollment.html", enrollment=True, data={"id":id,"title":title,"term":term})    
 
